@@ -20,6 +20,17 @@ public class Case {
         this.bateau=bateau;
     }
 
+    public void draw(){
+
+        if(this.getBateau()==null){
+            System.out.print("* ");
+        }else{
+            System.out.print(this.getBateau().getPion());
+        }
+    }
+
+
+
     public Etat getEtat(){
         return etat;
     }

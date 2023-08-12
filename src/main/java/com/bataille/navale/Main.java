@@ -1,19 +1,62 @@
   package com.bataille.navale;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
+  import com.bataille.navale.BO.Plateau;
+
+  import java.util.Scanner;
+
+  // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Entrée with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        // Press Maj+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        int colonnes;
+        int lignes;
 
-            // Press Maj+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Saisissez le nombre de colonnes désirez");
+        String nbString = scan.nextLine();
+
+        while (!isInteger(nbString) || Integer.parseInt(nbString) < 5) {
+
+            System.out.println("Saisissez le nombre de colonnes désirez");
+            nbString = scan.nextLine();
+
         }
+         colonnes = Integer.parseInt(nbString);
+
+
+        System.out.println("Saisissez le nombre de lignes désirez");
+        nbString = scan.nextLine();
+
+        while (!isInteger(nbString) || Integer.parseInt(nbString) < 5){
+
+            System.out.println("Saissiez le nombre de lignes désirez");
+            nbString = scan.nextLine();
+        }
+        lignes = Integer.parseInt(nbString);
+
+        System.out.println("colonnes: " +colonnes+ " lignes: "+lignes);
+
+
+        Plateau plateauJoueur1 = new Plateau(colonnes, lignes);
+        plateauJoueur1.draw();
+
+
     }
+
+
+
+      public static boolean isInteger(String strNum) {
+          if (strNum == null) {
+              return false;
+          }
+          try {
+              int d = Integer.parseInt(strNum);
+          } catch (NumberFormatException nfe) {
+              return false;
+          }
+          return true;
+      }
+
+
 }

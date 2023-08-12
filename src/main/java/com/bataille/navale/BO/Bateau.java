@@ -10,6 +10,12 @@ public class Bateau {
 
     private char etat;
 
+    public static void maMethode(){
+
+    }
+
+    public static int maVariable = 32;
+
     public Bateau(String nom,char pion,int taille,char etat){
 
         this.nom=nom;
