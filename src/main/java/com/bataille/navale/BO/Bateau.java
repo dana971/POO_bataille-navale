@@ -8,7 +8,7 @@ public class Bateau {
 
     private int taille;
 
-    private char etat;
+    private Etat etat;
 
     public static void maMethode(){
 
@@ -16,7 +16,7 @@ public class Bateau {
 
     public static int maVariable = 32;
 
-    public Bateau(String nom,char pion,int taille,char etat){
+    public Bateau(String nom,char pion,int taille,Etat etat){
 
         this.nom=nom;
         this.pion=pion;
@@ -49,11 +49,11 @@ public class Bateau {
         this.taille=taille;
     }
 
-    public char getEtat(){
+    public Etat getEtat(){
         return etat;
     }
 
-    public void setEtat(char etat){
+    public void setEtat(Etat etat){
         this.etat=etat;
     }
 }

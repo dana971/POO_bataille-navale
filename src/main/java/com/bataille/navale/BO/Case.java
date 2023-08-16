@@ -23,7 +23,7 @@ public class Case {
     public void draw(){
 
         if(this.getBateau()==null){
-            System.out.print("* ");
+            System.out.print("*  ");
         }else{
             System.out.print(this.getBateau().getPion());
         }

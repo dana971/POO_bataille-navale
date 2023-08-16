@@ -32,13 +32,53 @@ public class Plateau {
 
             for(int j=0; j<colonnes; j++){
 
-            this.getEchiquier()[i][j].draw();
+            this.getEchiquier()[j][i].draw();
 
             }
-            System.out.println("");
+            System.out.println("\n");
         }
 
 
+    }
+
+    public int nbCaseDispo(int x, int y, Orientation o){
+
+        int result = 0;
+
+        if( o == Orientation.H){
+            int nbBoucle = (colonnes - y)+1;
+
+            for(int i=0; i<nbBoucle; i++){
+
+                if(this.echiquier[y+i][x] == null){
+
+                    result++;
+
+                }
+            }
+
+        }else{
+
+            int nbBoucle = (lignes - x )+1;
+
+            for(int i=0; i<nbBoucle; i++){
+
+                if(this.getEchiquier()[y][x+i] == null){
+
+                    result++;
+                }
+            }
+
+        }
+
+        return result;
+    }
+
+    public boolean addABateau(Bateau bateau, int colonnes, int lignes,Orientation o){
+
+
+
+        return true;
     }
 
     public int getColonnes(){
