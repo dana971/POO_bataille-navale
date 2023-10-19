@@ -25,6 +25,8 @@ public class Bateau {
 
     }
 
+    public String toString(){ return getNom()+ " Pion : " +getPion()+ " Taille : "+getTaille();}
+
     public String getNom(){
         return nom;
     }

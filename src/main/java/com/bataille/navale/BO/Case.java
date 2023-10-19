@@ -25,7 +25,7 @@ public class Case {
         if(this.getBateau()==null){
             System.out.print("*  ");
         }else{
-            System.out.print(this.getBateau().getPion());
+            System.out.print(this.getBateau().getPion()+"  ");
         }
     }
 

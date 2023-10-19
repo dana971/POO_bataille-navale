@@ -9,21 +9,33 @@ public class Plateau {
 
 
     public Plateau(int colonnes, int lignes){
-
         this.colonnes=colonnes;
         this.lignes=lignes;
+
+        this.init();
+
+    }
+
+    public Plateau(){
+
+
+    }
+
+    public void init(){
+
+
         this.echiquier=new Case[colonnes][lignes];
 
         for(int i=0; i<colonnes; i++){
 
             for(int j=0; j<lignes; j++){
 
-                 this.echiquier [i][j] = new Case();
+                this.echiquier [i][j] = new Case();
             }
 
         }
-    }
 
+    }
 
 
     public void draw(){
@@ -46,26 +58,32 @@ public class Plateau {
         int result = 0;
 
         if( o == Orientation.H){
-            int nbBoucle = (colonnes - y)+1;
+            int nbBoucle = (colonnes - y);
 
             for(int i=0; i<nbBoucle; i++){
 
-                if(this.echiquier[y+i][x] == null){
+                if((this.echiquier[y+i][x]).getBateau() == null){
 
                     result++;
 
+                }else{
+
+                    return result;
                 }
             }
 
         }else{
 
-            int nbBoucle = (lignes - x )+1;
+            int nbBoucle = (lignes - x );
 
             for(int i=0; i<nbBoucle; i++){
 
-                if(this.getEchiquier()[y][x+i] == null){
+                if((this.getEchiquier()[y][x+i]).getBateau() == null){
 
                     result++;
+                }else{
+
+                    return result;
                 }
             }
 
@@ -74,9 +92,40 @@ public class Plateau {
         return result;
     }
 
-    public boolean addABateau(Bateau bateau, int colonnes, int lignes,Orientation o){
+    public boolean addABateau(Bateau bateau, int x, int y,Orientation o){
+
+        x--;
+        y--;
+
+        int resultCaseDispo = nbCaseDispo( x, y, o);
+
+        if(resultCaseDispo >= bateau.getTaille()){
 
 
+            if( o == Orientation.H){
+
+                for(int i=0; i< bateau.getTaille(); i++){
+
+                    this.echiquier[y+i][x].setBateau(bateau);
+
+                }
+
+            }else{
+
+
+                for(int i=0; i< bateau.getTaille(); i++){
+
+                    this.getEchiquier()[y][x+i].setBateau(bateau);
+
+                }
+
+            }
+
+        }else{
+            System.out.println("Nombre de cases disponible insuffisant ("+resultCaseDispo+")");
+            return false;
+
+        }
 
         return true;
     }
